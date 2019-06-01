@@ -4,7 +4,7 @@
   "description": "A basic personal website for Alexandra Systems, which will at first simply be my personal website and later (hopefully) be developed into a website for my small consultancy firm.",
   "main": "index.js",
   "scripts": {
-    "start" : "node server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alexandra Marie Miller",
