@@ -21,15 +21,10 @@ rm gotty_linux_386.tar.gz
 
 #edit gotty config
 echo "port = \"80\"
-
-preferences {
-    background_color = "rgb(0,0,0)",
-    
-}
 " | cat > ~/.gotty
 
 #build docker
 docker build -t "alexandra-systems" .
 
 #startup
-gotty -w docker run -it --rm alexandra-systems /bin/ash --login
+nohup gotty -w docker run -it --rm alexandra-systems /bin/ash --login &
