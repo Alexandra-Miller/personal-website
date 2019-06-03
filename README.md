@@ -7,5 +7,4 @@ they might any other, but also providing restrictions against DOSing the server.
 
 ## Deploy Instructions:
 
-To deploy simply run `sudo deploy.sh $NAME` where $NAME is the name of a valid
-google cloud server running linux.
+To deploy update the config with your settings and enter ./deploy.sh.

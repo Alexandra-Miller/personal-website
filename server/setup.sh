@@ -21,6 +21,8 @@ rm gotty_linux_386.tar.gz
 
 #edit gotty config
 echo "port = \"80\"
+timeout = 0
+title_format = \"AS-website\"
 " | cat > ~/.gotty
 
 #build docker

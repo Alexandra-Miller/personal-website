@@ -1,21 +1,39 @@
 #!/bin/bash
 
+source config
+
+newVersion=`expr $version + 1`
+
+oldServer=$name-$version
+newServer=$name-$newVersion
+
 #delete old instance 
-gcloud -q compute instances delete --zone us-central1-a $1
+gcloud -q compute instances delete $name-$version\
+    --zone $zone
 
 #create new instance
-gcloud -q compute instances create $1 \
+gcloud -q compute instances create $newServer \
     --image-project debian-cloud \
     --image-family  debian-9 \
-    --zone us-central1-a \
-    --machine-type f1-micro \
-    --address 35.202.76.6
+    --zone $zone \
+    --address $ipAddr \
+    --machine-type $type
 
-#copy file to instance and execute setup/start script
-gcloud -q compute scp --zone us-central1-a --recurse $PWD/server/* $1:~/
-gcloud -q compute ssh $1 --zone us-central1-a -- "sudo ./setup.sh"
+#copy file to instance and execute setup script
+gcloud -q compute scp --zone $zone --recurse $PWD/server/* $newServer:~/
+gcloud -q compute ssh $newServer --zone $zone -- "sudo ./setup.sh"
 
 #open firewall
-gcloud compute instances add-tags $1 \
-    --zone us-central1-a \
+gcloud compute instances add-tags $newServer \
+    --zone $zone \
     --tags http-server
+
+#change IP to new server 
+
+#replace config with new config
+
+echo "zone=\"$zone\"
+type=\"$type\"
+name=\"$name\"
+version=\"$newVersion\"
+ip-addr=\"$ipAddr\"" | cat > config
