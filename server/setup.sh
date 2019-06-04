@@ -19,11 +19,12 @@ systemctl enable docker
 # cleanup deps
 rm gotty_linux_386.tar.gz
 
-#edit gotty config
+# make gotty settings file
 echo "port = \"80\"
 timeout = 0
 title_format = \"AS-website\"
 " | cat > ~/.gotty
+
 
 #build docker
 docker build -t "alexandra-systems" .

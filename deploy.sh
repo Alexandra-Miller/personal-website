@@ -36,4 +36,4 @@ echo "zone=\"$zone\"
 type=\"$type\"
 name=\"$name\"
 version=\"$newVersion\"
-ip-addr=\"$ipAddr\"" | cat > config
+ipAddr=\"$ipAddr\"" | cat > config

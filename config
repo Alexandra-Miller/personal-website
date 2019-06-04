@@ -1,5 +1,5 @@
 zone="us-central1-a"
 type="f1-micro"
 name="gotty-server"
-version="3"
-ip-addr="35.202.76.6"
+version="14"
+ipAddr="35.202.76.6"
